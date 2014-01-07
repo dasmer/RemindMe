@@ -1,0 +1,681 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F08F9D918778FF500A4BFEA /* PMEDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */; };
+		2F08FA261877C18400A4BFEA /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA251877C18400A4BFEA /* DataStore.m */; };
+		2F08FA291877D5CA00A4BFEA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA271877D5CA00A4BFEA /* Model.xcdatamodeld */; };
+		2F08FA3018787B6D00A4BFEA /* Reminder+Methods.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA2F18787B6D00A4BFEA /* Reminder+Methods.m */; };
+		2F08FA481878989A00A4BFEA /* ReminderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA471878989A00A4BFEA /* ReminderCell.m */; };
+		2F08FA4B1878C19000A4BFEA /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA4A1878C19000A4BFEA /* NavigationController.m */; };
+		2F08FA4D187924F800A4BFEA /* text_notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F08FA4C187924F800A4BFEA /* text_notification.mp3 */; };
+		2F08FA531879F70000A4BFEA /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA521879F70000A4BFEA /* Reminder.m */; };
+		2FA0B98C18776D9A0018EB0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98B18776D9A0018EB0B /* Foundation.framework */; };
+		2FA0B98E18776D9A0018EB0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98D18776D9A0018EB0B /* CoreGraphics.framework */; };
+		2FA0B99018776D9A0018EB0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98F18776D9A0018EB0B /* UIKit.framework */; };
+		2FA0B99618776D9A0018EB0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0B99418776D9A0018EB0B /* InfoPlist.strings */; };
+		2FA0B99818776D9A0018EB0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B99718776D9A0018EB0B /* main.m */; };
+		2FA0B99C18776D9A0018EB0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B99B18776D9A0018EB0B /* AppDelegate.m */; };
+		2FA0B99F18776D9A0018EB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0B99D18776D9A0018EB0B /* Main.storyboard */; };
+		2FA0B9A218776D9A0018EB0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9A118776D9A0018EB0B /* ViewController.m */; };
+		2FA0B9A418776D9A0018EB0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0B9A318776D9A0018EB0B /* Images.xcassets */; };
+		2FA0B9AB18776D9A0018EB0B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B9AA18776D9A0018EB0B /* XCTest.framework */; };
+		2FA0B9AC18776D9A0018EB0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98B18776D9A0018EB0B /* Foundation.framework */; };
+		2FA0B9AD18776D9A0018EB0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98F18776D9A0018EB0B /* UIKit.framework */; };
+		2FA0B9B518776D9A0018EB0B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA0B9B318776D9A0018EB0B /* InfoPlist.strings */; };
+		2FA0B9B718776D9A0018EB0B /* RemindMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9B618776D9A0018EB0B /* RemindMeTests.m */; };
+		2FA0B9C2187772B00018EB0B /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */; };
+		2FA0B9C5187772BE0018EB0B /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */; };
+		2FA0B9C8187774DB0018EB0B /* ReminderMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */; };
+		E3EFBD6104A045A8B831555F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 909E5F5386BA4E3E964E3F59 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2FA0B9AE18776D9A0018EB0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2FA0B98018776D9A0018EB0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FA0B98718776D9A0018EB0B;
+			remoteInfo = RemindMe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2F08F9D718778FF500A4BFEA /* PMEDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMEDatePicker.h; sourceTree = "<group>"; };
+		2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMEDatePicker.m; sourceTree = "<group>"; };
+		2F08FA241877C18400A4BFEA /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStore.h; sourceTree = "<group>"; };
+		2F08FA251877C18400A4BFEA /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStore.m; sourceTree = "<group>"; };
+		2F08FA281877D5CA00A4BFEA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2F08FA2E18787B6D00A4BFEA /* Reminder+Methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+Methods.h"; sourceTree = "<group>"; };
+		2F08FA2F18787B6D00A4BFEA /* Reminder+Methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+Methods.m"; sourceTree = "<group>"; };
+		2F08FA461878989A00A4BFEA /* ReminderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderCell.h; sourceTree = "<group>"; };
+		2F08FA471878989A00A4BFEA /* ReminderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderCell.m; sourceTree = "<group>"; };
+		2F08FA491878C19000A4BFEA /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		2F08FA4A1878C19000A4BFEA /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		2F08FA4C187924F800A4BFEA /* text_notification.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = text_notification.mp3; sourceTree = "<group>"; };
+		2F08FA511879F70000A4BFEA /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		2F08FA521879F70000A4BFEA /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		2FA0B98818776D9A0018EB0B /* RemindMe - Text Scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RemindMe - Text Scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA0B98B18776D9A0018EB0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2FA0B98D18776D9A0018EB0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2FA0B98F18776D9A0018EB0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2FA0B99318776D9A0018EB0B /* RemindMe-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RemindMe-Info.plist"; sourceTree = "<group>"; };
+		2FA0B99518776D9A0018EB0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2FA0B99718776D9A0018EB0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2FA0B99918776D9A0018EB0B /* RemindMe-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RemindMe-Prefix.pch"; sourceTree = "<group>"; };
+		2FA0B99A18776D9A0018EB0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2FA0B99B18776D9A0018EB0B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2FA0B99E18776D9A0018EB0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2FA0B9A018776D9A0018EB0B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2FA0B9A118776D9A0018EB0B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2FA0B9A318776D9A0018EB0B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2FA0B9A918776D9A0018EB0B /* RemindMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA0B9AA18776D9A0018EB0B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2FA0B9B218776D9A0018EB0B /* RemindMeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RemindMeTests-Info.plist"; sourceTree = "<group>"; };
+		2FA0B9B418776D9A0018EB0B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2FA0B9B618776D9A0018EB0B /* RemindMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemindMeTests.m; sourceTree = "<group>"; };
+		2FA0B9C0187772B00018EB0B /* UIImage+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FontAwesome.h"; sourceTree = "<group>"; };
+		2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FontAwesome.m"; sourceTree = "<group>"; };
+		2FA0B9C3187772BE0018EB0B /* UIColor+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Custom.h"; sourceTree = "<group>"; };
+		2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
+		2FA0B9C6187774DB0018EB0B /* ReminderMakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderMakerViewController.h; sourceTree = "<group>"; };
+		2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderMakerViewController.m; sourceTree = "<group>"; };
+		909E5F5386BA4E3E964E3F59 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBEB4D869300429BADFC1777 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2FA0B98518776D9A0018EB0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B98E18776D9A0018EB0B /* CoreGraphics.framework in Frameworks */,
+				2FA0B99018776D9A0018EB0B /* UIKit.framework in Frameworks */,
+				2FA0B98C18776D9A0018EB0B /* Foundation.framework in Frameworks */,
+				E3EFBD6104A045A8B831555F /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA0B9A618776D9A0018EB0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B9AB18776D9A0018EB0B /* XCTest.framework in Frameworks */,
+				2FA0B9AD18776D9A0018EB0B /* UIKit.framework in Frameworks */,
+				2FA0B9AC18776D9A0018EB0B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F08FA2D1877DA0C00A4BFEA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2F08FA241877C18400A4BFEA /* DataStore.h */,
+				2F08FA251877C18400A4BFEA /* DataStore.m */,
+				2F08FA511879F70000A4BFEA /* Reminder.h */,
+				2F08FA521879F70000A4BFEA /* Reminder.m */,
+				2F08FA271877D5CA00A4BFEA /* Model.xcdatamodeld */,
+				2F08FA2E18787B6D00A4BFEA /* Reminder+Methods.h */,
+				2F08FA2F18787B6D00A4BFEA /* Reminder+Methods.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2FA0B97F18776D9A0018EB0B = {
+			isa = PBXGroup;
+			children = (
+				2FA0B99118776D9A0018EB0B /* RemindMe */,
+				2FA0B9B018776D9A0018EB0B /* RemindMeTests */,
+				2FA0B98A18776D9A0018EB0B /* Frameworks */,
+				2FA0B98918776D9A0018EB0B /* Products */,
+				EBEB4D869300429BADFC1777 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		2FA0B98918776D9A0018EB0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B98818776D9A0018EB0B /* RemindMe - Text Scheduler.app */,
+				2FA0B9A918776D9A0018EB0B /* RemindMeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2FA0B98A18776D9A0018EB0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B98B18776D9A0018EB0B /* Foundation.framework */,
+				2FA0B98D18776D9A0018EB0B /* CoreGraphics.framework */,
+				2FA0B98F18776D9A0018EB0B /* UIKit.framework */,
+				2FA0B9AA18776D9A0018EB0B /* XCTest.framework */,
+				909E5F5386BA4E3E964E3F59 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2FA0B99118776D9A0018EB0B /* RemindMe */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B99A18776D9A0018EB0B /* AppDelegate.h */,
+				2FA0B99B18776D9A0018EB0B /* AppDelegate.m */,
+				2F08FA2D1877DA0C00A4BFEA /* Model */,
+				2FA0B9C0187772B00018EB0B /* UIImage+FontAwesome.h */,
+				2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */,
+				2FA0B9C3187772BE0018EB0B /* UIColor+Custom.h */,
+				2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */,
+				2FA0B99D18776D9A0018EB0B /* Main.storyboard */,
+				2F08FA461878989A00A4BFEA /* ReminderCell.h */,
+				2F08FA471878989A00A4BFEA /* ReminderCell.m */,
+				2FA0B9A018776D9A0018EB0B /* ViewController.h */,
+				2FA0B9A118776D9A0018EB0B /* ViewController.m */,
+				2F08FA491878C19000A4BFEA /* NavigationController.h */,
+				2F08FA4A1878C19000A4BFEA /* NavigationController.m */,
+				2FA0B9C6187774DB0018EB0B /* ReminderMakerViewController.h */,
+				2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */,
+				2F08F9D718778FF500A4BFEA /* PMEDatePicker.h */,
+				2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */,
+				2F08FA4C187924F800A4BFEA /* text_notification.mp3 */,
+				2FA0B9A318776D9A0018EB0B /* Images.xcassets */,
+				2FA0B99218776D9A0018EB0B /* Supporting Files */,
+			);
+			path = RemindMe;
+			sourceTree = "<group>";
+		};
+		2FA0B99218776D9A0018EB0B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B99318776D9A0018EB0B /* RemindMe-Info.plist */,
+				2FA0B99418776D9A0018EB0B /* InfoPlist.strings */,
+				2FA0B99718776D9A0018EB0B /* main.m */,
+				2FA0B99918776D9A0018EB0B /* RemindMe-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2FA0B9B018776D9A0018EB0B /* RemindMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B9B618776D9A0018EB0B /* RemindMeTests.m */,
+				2FA0B9B118776D9A0018EB0B /* Supporting Files */,
+			);
+			path = RemindMeTests;
+			sourceTree = "<group>";
+		};
+		2FA0B9B118776D9A0018EB0B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B9B218776D9A0018EB0B /* RemindMeTests-Info.plist */,
+				2FA0B9B318776D9A0018EB0B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FA0B98718776D9A0018EB0B /* RemindMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA0B9BA18776D9A0018EB0B /* Build configuration list for PBXNativeTarget "RemindMe" */;
+			buildPhases = (
+				8FD3D47BF9F14C0E872E4EF3 /* Check Pods Manifest.lock */,
+				2FA0B98418776D9A0018EB0B /* Sources */,
+				2FA0B98518776D9A0018EB0B /* Frameworks */,
+				2FA0B98618776D9A0018EB0B /* Resources */,
+				612D97F4186B479DAA6A21D7 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemindMe;
+			productName = RemindMe;
+			productReference = 2FA0B98818776D9A0018EB0B /* RemindMe - Text Scheduler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2FA0B9A818776D9A0018EB0B /* RemindMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FA0B9BD18776D9A0018EB0B /* Build configuration list for PBXNativeTarget "RemindMeTests" */;
+			buildPhases = (
+				2FA0B9A518776D9A0018EB0B /* Sources */,
+				2FA0B9A618776D9A0018EB0B /* Frameworks */,
+				2FA0B9A718776D9A0018EB0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2FA0B9AF18776D9A0018EB0B /* PBXTargetDependency */,
+			);
+			name = RemindMeTests;
+			productName = RemindMeTests;
+			productReference = 2FA0B9A918776D9A0018EB0B /* RemindMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2FA0B98018776D9A0018EB0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Columbia University";
+				TargetAttributes = {
+					2FA0B9A818776D9A0018EB0B = {
+						TestTargetID = 2FA0B98718776D9A0018EB0B;
+					};
+				};
+			};
+			buildConfigurationList = 2FA0B98318776D9A0018EB0B /* Build configuration list for PBXProject "RemindMe" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2FA0B97F18776D9A0018EB0B;
+			productRefGroup = 2FA0B98918776D9A0018EB0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FA0B98718776D9A0018EB0B /* RemindMe */,
+				2FA0B9A818776D9A0018EB0B /* RemindMeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2FA0B98618776D9A0018EB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B9A418776D9A0018EB0B /* Images.xcassets in Resources */,
+				2FA0B99618776D9A0018EB0B /* InfoPlist.strings in Resources */,
+				2F08FA4D187924F800A4BFEA /* text_notification.mp3 in Resources */,
+				2FA0B99F18776D9A0018EB0B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA0B9A718776D9A0018EB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B9B518776D9A0018EB0B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		612D97F4186B479DAA6A21D7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FD3D47BF9F14C0E872E4EF3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2FA0B98418776D9A0018EB0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B9C2187772B00018EB0B /* UIImage+FontAwesome.m in Sources */,
+				2FA0B9C5187772BE0018EB0B /* UIColor+Custom.m in Sources */,
+				2F08FA4B1878C19000A4BFEA /* NavigationController.m in Sources */,
+				2FA0B9A218776D9A0018EB0B /* ViewController.m in Sources */,
+				2FA0B9C8187774DB0018EB0B /* ReminderMakerViewController.m in Sources */,
+				2F08FA3018787B6D00A4BFEA /* Reminder+Methods.m in Sources */,
+				2FA0B99C18776D9A0018EB0B /* AppDelegate.m in Sources */,
+				2F08FA291877D5CA00A4BFEA /* Model.xcdatamodeld in Sources */,
+				2F08FA261877C18400A4BFEA /* DataStore.m in Sources */,
+				2FA0B99818776D9A0018EB0B /* main.m in Sources */,
+				2F08FA531879F70000A4BFEA /* Reminder.m in Sources */,
+				2F08F9D918778FF500A4BFEA /* PMEDatePicker.m in Sources */,
+				2F08FA481878989A00A4BFEA /* ReminderCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2FA0B9A518776D9A0018EB0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FA0B9B718776D9A0018EB0B /* RemindMeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2FA0B9AF18776D9A0018EB0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FA0B98718776D9A0018EB0B /* RemindMe */;
+			targetProxy = 2FA0B9AE18776D9A0018EB0B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2FA0B99418776D9A0018EB0B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA0B99518776D9A0018EB0B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2FA0B99D18776D9A0018EB0B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA0B99E18776D9A0018EB0B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2FA0B9B318776D9A0018EB0B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2FA0B9B418776D9A0018EB0B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2F08FA541879F76800A4BFEA /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "App Store";
+		};
+		2F08FA551879F76800A4BFEA /* App Store */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBEB4D869300429BADFC1777 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dasmer Singh (63259B266M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dasmer Singh (63259B266M)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				INFOPLIST_FILE = "RemindMe/RemindMe-Info.plist";
+				PRODUCT_NAME = "RemindMe - Text Scheduler";
+				PROVISIONING_PROFILE = "ABBF6239-B137-4639-B02C-AE80C4A7AF58";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "App Store";
+		};
+		2F08FA561879F76800A4BFEA /* App Store */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RemindMe.app/RemindMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				INFOPLIST_FILE = "RemindMeTests/RemindMeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = "App Store";
+		};
+		2FA0B9B818776D9A0018EB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2FA0B9B918776D9A0018EB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2FA0B9BB18776D9A0018EB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBEB4D869300429BADFC1777 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				INFOPLIST_FILE = "RemindMe/RemindMe-Info.plist";
+				PRODUCT_NAME = "RemindMe - Text Scheduler";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2FA0B9BC18776D9A0018EB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBEB4D869300429BADFC1777 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dasmer Singh (63259B266M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dasmer Singh (63259B266M)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				INFOPLIST_FILE = "RemindMe/RemindMe-Info.plist";
+				PRODUCT_NAME = "RemindMe - Text Scheduler";
+				PROVISIONING_PROFILE = "C16498CE-825D-4708-8314-2987DC326D9F";
+				VALIDATE_PRODUCT = NO;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2FA0B9BE18776D9A0018EB0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RemindMe.app/RemindMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RemindMeTests/RemindMeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2FA0B9BF18776D9A0018EB0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RemindMe.app/RemindMe";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
+				INFOPLIST_FILE = "RemindMeTests/RemindMeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2FA0B98318776D9A0018EB0B /* Build configuration list for PBXProject "RemindMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA0B9B818776D9A0018EB0B /* Debug */,
+				2FA0B9B918776D9A0018EB0B /* Release */,
+				2F08FA541879F76800A4BFEA /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FA0B9BA18776D9A0018EB0B /* Build configuration list for PBXNativeTarget "RemindMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA0B9BB18776D9A0018EB0B /* Debug */,
+				2FA0B9BC18776D9A0018EB0B /* Release */,
+				2F08FA551879F76800A4BFEA /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FA0B9BD18776D9A0018EB0B /* Build configuration list for PBXNativeTarget "RemindMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2FA0B9BE18776D9A0018EB0B /* Debug */,
+				2FA0B9BF18776D9A0018EB0B /* Release */,
+				2F08FA561879F76800A4BFEA /* App Store */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2F08FA271877D5CA00A4BFEA /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2F08FA281877D5CA00A4BFEA /* Model.xcdatamodel */,
+			);
+			currentVersion = 2F08FA281877D5CA00A4BFEA /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2FA0B98018776D9A0018EB0B /* Project object */;
+}
