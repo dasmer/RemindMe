@@ -5,7 +5,7 @@
 
 RemindMe is a useful **iOS 7** reminder app that allows the user to set-up a reminder to text a contact.
 
-The App uses the user's **AddressBook** in order for the user to select a contact and get the phone number to text to.  The user sets-up the time and day to be reminded as well as type the message that is to be sent in the future.  
+The App uses the user's **AddressBook** in order for the user to select a contact and get the phone number to text to.  The user sets-up the time and day to be reminded as well as type the message that is to be sent in the future.
 
 At any time the user can see a listing of all their reminders providing a single quick view of the recipient, the phone number, the date and time of the reminder and the message to be texted.
 
@@ -18,10 +18,10 @@ Perhaps the best feature of the app is on the time and date of the reminder the 
 ##### Podfile
 ```
 platform :ios, '7.0'
-pod 'FontAwesomeKit'<br>
-pod 'TWMessageBarManager'<br>
-pod 'ECPhoneNumberFormatter'<br>
-pod 'UIAlertView+Blocks'<br>
+pod 'FontAwesomeKit'
+pod 'TWMessageBarManager'
+pod 'ECPhoneNumberFormatter'
+pod 'UIAlertView+Blocks'
 ```
 
 #### Contributing
