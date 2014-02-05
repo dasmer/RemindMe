@@ -9,7 +9,6 @@
 #import "NavigationController.h"
 #import "TWMessageBarManager.h"
 #import "UIColor+Custom.h"
-@import iAd;
 
 
 @interface NavigationController ()
@@ -95,6 +94,8 @@
 
 - (void) constructAd{
     self.iAd = [[ADBannerView alloc] init];
+    self.iAd.hidden = YES;
+    self.iAd.delegate = self;
     [self.iAd setBackgroundColor:[UIColor whiteColor]];
     CGRect iAdFrame = self.iAd.frame;
     CGFloat newOriginY = self.view.frame.size.height - iAdFrame.size.height;
@@ -104,6 +105,16 @@
 
 - (CGFloat) iAdHeight{
     return CGRectGetHeight(self.iAd.frame);
+}
+
+#pragma mark - AdBannerView Delegate Methods
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    banner.hidden = YES;
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    banner.hidden = NO;
 }
 
 @end

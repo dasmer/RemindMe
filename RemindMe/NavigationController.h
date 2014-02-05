@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "DataStore.h"
 @import MessageUI;
+@import iAd;
 
-@interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate,UIAlertViewDelegate>
+
+
+@interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate,UIAlertViewDelegate,ADBannerViewDelegate>
 
 - (void)showReminderForMyReminder: (Reminder *) myReminder;
 - (void) showReminderForReminderObjectIDURIString: (NSString *) uriString;
