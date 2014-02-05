@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@import MessageUI;
 #import "DataStore.h"
+@import MessageUI;
 
 @interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate,UIAlertViewDelegate>
 
-
 - (void)showReminderForMyReminder: (Reminder *) myReminder;
 - (void) showReminderForReminderObjectIDURIString: (NSString *) uriString;
-
+- (CGFloat) iAdHeight;
 @end

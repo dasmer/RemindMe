@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2FA0B98718776D9A0018EB0B"
-               BuildableName = "RemindMe.app"
+               BuildableName = "RemindMe - Text Scheduler.app"
                BlueprintName = "RemindMe"
                ReferencedContainer = "container:RemindMe.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2FA0B98718776D9A0018EB0B"
-            BuildableName = "RemindMe.app"
+            BuildableName = "RemindMe - Text Scheduler.app"
             BlueprintName = "RemindMe"
             ReferencedContainer = "container:RemindMe.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2FA0B98718776D9A0018EB0B"
-            BuildableName = "RemindMe.app"
+            BuildableName = "RemindMe - Text Scheduler.app"
             BlueprintName = "RemindMe"
             ReferencedContainer = "container:RemindMe.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2FA0B98718776D9A0018EB0B"
-            BuildableName = "RemindMe.app"
+            BuildableName = "RemindMe - Text Scheduler.app"
             BlueprintName = "RemindMe"
             ReferencedContainer = "container:RemindMe.xcodeproj">
          </BuildableReference>

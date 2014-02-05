@@ -11,6 +11,7 @@
 #import "UIColor+Custom.h"
 #import "TWMessageBarManager.h"
 #import "DataStore.h"
+#import "NavigationController.h"
 
 @interface ReminderMakerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *recipientView;
@@ -43,32 +44,24 @@
 {
     [super viewDidLoad];
     self.managedObjectContext = [DataStore instance].managedObjectContext;
-    
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dropKeyboard)];
-    
     self.title = @"Compose";
-
-    
     [self.addContactButton setImage:[UIImage plusCircleIconSize:self.addContactButton.frame.size.width withColor:[UIColor twitterColor]] forState:UIControlStateNormal];
     [self.addContactButton addTarget:self action:@selector(showContactList:) forControlEvents:UIControlEventTouchUpInside];
-    
     self.datePicker.dateDelegate = self;
     [self.datePicker setMinimumDate:[NSDate date]];
     [self.datePicker setDate:[NSDate date] animated:NO];
     self.textArea.delegate = self;
     [self.personLabel setTextColor:[UIColor twitterColor]];
     self.personLabel.text = @"";
-    
-//    self.datePicker.userInteractionEnabled = NO;
-//    self.datePicker.alpha = .6;
-//    self.datePicker.tintColor = [UIColor twitterColor];
-    
-//    self.textArea.layer.borderColor = [[UIColor twitterColor] CGColor];
-//    self.textArea.layer.borderWidth = 3;
-//    self.textArea.clipsToBounds = YES;
     UITapGestureRecognizer *tapRecipient = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showContactList:)];
     [self.recipientView addGestureRecognizer:tapRecipient];
-    
+}
+
+- (void) viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    NavigationController *navController = (NavigationController *) self.navigationController;
+    self.tableView.contentSize = CGSizeMake(self.tableView.frame.size.width, self.tableView.frame.size.height + [navController iAdHeight]);
 }
 
 - (void) saveReminder{
@@ -109,9 +102,7 @@
 
 #pragma mark - People Picker Delegate Methods
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-    
     return YES;
-    
 }
 
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
@@ -253,7 +244,6 @@
     }
 }
 
-
 #pragma mark - CommonClassFunctions
 +  (BOOL) isContentInString: (NSString *) string{
     NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -265,10 +255,5 @@
         return YES;
     }
 }
-
-
-
-
-
 
 @end

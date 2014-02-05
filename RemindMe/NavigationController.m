@@ -9,36 +9,21 @@
 #import "NavigationController.h"
 #import "TWMessageBarManager.h"
 #import "UIColor+Custom.h"
+@import iAd;
+
 
 @interface NavigationController ()
-
+@property (strong,nonatomic) ADBannerView *iAd;
 @property (strong,nonatomic) Reminder *currentReminder;
-
 @end
 
 @implementation NavigationController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self constructAd];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (void)showReminderForReminderObjectIDURIString:(NSString *)uriString{
     NSURL *uri = [NSURL URLWithString:uriString];
@@ -105,4 +90,20 @@
     }
     self.currentReminder = nil;
 }
+
+#pragma mark - iAd Methods
+
+- (void) constructAd{
+    self.iAd = [[ADBannerView alloc] init];
+    [self.iAd setBackgroundColor:[UIColor whiteColor]];
+    CGRect iAdFrame = self.iAd.frame;
+    CGFloat newOriginY = self.view.frame.size.height - iAdFrame.size.height;
+    self.iAd.frame = CGRectMake(iAdFrame.origin.x, newOriginY, iAdFrame.size.width, iAdFrame.size.height);
+    [self.view addSubview:self.iAd];
+}
+
+- (CGFloat) iAdHeight{
+    return CGRectGetHeight(self.iAd.frame);
+}
+
 @end

@@ -13,12 +13,9 @@
 #import "UIAlertView+Blocks.h"
 #import "NavigationController.h"
 
-
 @interface ViewController ()
 @property  (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *frc;
-
-
 @property (strong,nonatomic) UIButton *eraseButton;
 @property (strong,nonatomic) UIButton *doneButton;
 @end
@@ -30,35 +27,24 @@
     [super viewDidLoad];
     
     self.managedObjectContext = [DataStore instance].managedObjectContext;
-    
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Reminder"];
     NSSortDescriptor *ageSort = [[NSSortDescriptor alloc] initWithKey:@"fireDate" ascending:YES];
     fetchRequest.sortDescriptors = @[ageSort];
-    
     self.frc =
     [[NSFetchedResultsController alloc]
      initWithFetchRequest:fetchRequest
      managedObjectContext:[self managedObjectContext]
      sectionNameKeyPath:nil
      cacheName:nil];
-    
     [self.frc performFetch:nil];
     self.frc.delegate = self;
-    
-    
-    
     self.title = @"Reminders";
-    
     CGFloat buttonSize = 22;
-    
     UIButton *composeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonSize, buttonSize)];
     [composeButton setContentMode:UIViewContentModeCenter];
     [composeButton addTarget:self action:@selector(showNewReminderViewController:) forControlEvents:UIControlEventTouchUpInside];
     [composeButton setBackgroundImage:[UIImage composeIconSize:buttonSize withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithCustomView:composeButton];
-    
-    
     self.eraseButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, buttonSize, buttonSize)];
     [self.eraseButton setContentMode:UIViewContentModeCenter];
     [self.eraseButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -73,9 +59,13 @@
     
     self.navigationItem.leftBarButtonItem = editButton;
     self.navigationItem.rightBarButtonItem = addButton;
-    
 }
 
+- (void) viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    NavigationController *navController = (NavigationController *) self.navigationController;
+    self.tableView.contentSize = CGSizeMake(self.tableView.frame.size.width, self.tableView.frame.size.height + [navController iAdHeight]);
+}
 
 - (void) editButtonClicked: (id) sender{
     [self setEditing:YES animated:YES];
@@ -98,10 +88,6 @@
     [self.navigationController pushViewController:rmvc animated:YES];
 }
 
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -122,7 +108,6 @@
 
     id <NSFetchedResultsSectionInfo> sectionInfo = self.frc.sections[section];
     NSInteger numObjects = sectionInfo.numberOfObjects;
-    NSLog(@" section is %d numOb = %d",section, numObjects);
     if (numObjects <= 0){
         [self.eraseButton setEnabled:NO];
     }
@@ -235,7 +220,5 @@
         [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
-
-
 
 @end

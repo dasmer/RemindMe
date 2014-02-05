@@ -29,9 +29,7 @@
     UILocalNotification *locationNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (locationNotification) {
         // Set icon badge number to zero
-        NSLog(@"test1");
         if([self.window.rootViewController isKindOfClass:[NavigationController class]]){
-            NSLog(@"test2");
             NavigationController *nc = (NavigationController *) self.window.rootViewController;
             [nc showReminderForReminderObjectIDURIString:[locationNotification.userInfo objectForKey:[[NSNumber numberWithInteger:kReminderObjectID] stringValue]]];
             //        }

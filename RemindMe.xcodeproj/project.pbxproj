@@ -128,6 +128,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		2F1CF7A918A281FA0088C69A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2FA0B9C0187772B00018EB0B /* UIImage+FontAwesome.h */,
+				2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */,
+				2FA0B9C3187772BE0018EB0B /* UIColor+Custom.h */,
+				2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		2FA0B97F18776D9A0018EB0B = {
 			isa = PBXGroup;
 			children = (
@@ -163,25 +174,16 @@
 		2FA0B99118776D9A0018EB0B /* RemindMe */ = {
 			isa = PBXGroup;
 			children = (
-				2FA0B99A18776D9A0018EB0B /* AppDelegate.h */,
-				2FA0B99B18776D9A0018EB0B /* AppDelegate.m */,
-				2F08FA2D1877DA0C00A4BFEA /* Model */,
-				2FA0B9C0187772B00018EB0B /* UIImage+FontAwesome.h */,
-				2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */,
-				2FA0B9C3187772BE0018EB0B /* UIColor+Custom.h */,
-				2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */,
 				2FA0B99D18776D9A0018EB0B /* Main.storyboard */,
 				2F08FA461878989A00A4BFEA /* ReminderCell.h */,
 				2F08FA471878989A00A4BFEA /* ReminderCell.m */,
 				2FA0B9A018776D9A0018EB0B /* ViewController.h */,
 				2FA0B9A118776D9A0018EB0B /* ViewController.m */,
-				2F08FA491878C19000A4BFEA /* NavigationController.h */,
-				2F08FA4A1878C19000A4BFEA /* NavigationController.m */,
 				2FA0B9C6187774DB0018EB0B /* ReminderMakerViewController.h */,
 				2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */,
-				2F08F9D718778FF500A4BFEA /* PMEDatePicker.h */,
-				2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */,
-				2F08FA4C187924F800A4BFEA /* text_notification.mp3 */,
+				2F08FA491878C19000A4BFEA /* NavigationController.h */,
+				2F08FA4A1878C19000A4BFEA /* NavigationController.m */,
+				2F08FA2D1877DA0C00A4BFEA /* Model */,
 				2FA0B9A318776D9A0018EB0B /* Images.xcassets */,
 				2FA0B99218776D9A0018EB0B /* Supporting Files */,
 			);
@@ -191,6 +193,12 @@
 		2FA0B99218776D9A0018EB0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F1CF7A918A281FA0088C69A /* Categories */,
+				2F08F9D718778FF500A4BFEA /* PMEDatePicker.h */,
+				2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */,
+				2F08FA4C187924F800A4BFEA /* text_notification.mp3 */,
+				2FA0B99A18776D9A0018EB0B /* AppDelegate.h */,
+				2FA0B99B18776D9A0018EB0B /* AppDelegate.m */,
 				2FA0B99318776D9A0018EB0B /* RemindMe-Info.plist */,
 				2FA0B99418776D9A0018EB0B /* InfoPlist.strings */,
 				2FA0B99718776D9A0018EB0B /* main.m */,
@@ -440,6 +448,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -537,7 +546,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dasmer Singh (63259B266M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dasmer Singh (63259B266M)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -548,6 +558,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "555C85DF-DDBA-4A3B-9D25-304BBD8F4BA3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -581,7 +592,6 @@
 				GCC_PREFIX_HEADER = "RemindMe/RemindMe-Prefix.pch";
 				INFOPLIST_FILE = "RemindMe/RemindMe-Info.plist";
 				PRODUCT_NAME = "RemindMe - Text Scheduler";
-				PROVISIONING_PROFILE = "C16498CE-825D-4708-8314-2987DC326D9F";
 				VALIDATE_PRODUCT = NO;
 				WRAPPER_EXTENSION = app;
 			};
