@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Choose Recipient Phone Number:" id="0ub-bm-x2n">
+                            <tableViewSection headerTitle="Choose Recipient:" id="0ub-bm-x2n">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Vuf-Cs-Jtb">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>
@@ -108,20 +108,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FH2-K5-o0o">
-                                                    <rect key="frame" x="275" y="9" width="25" height="25"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dasmer Singh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="FkK-FE-jOP">
-                                                    <rect key="frame" x="11" y="6" width="226" height="32"/>
+                                                    <rect key="frame" x="51" y="6" width="226" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nn3-j2-rC4">
+                                                    <rect key="frame" x="275" y="2" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone # or Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-WA-j7X">
+                                                    <rect key="frame" x="51" y="7" width="192" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ViP-cU-hwO">
+                                                    <rect key="frame" x="283" y="9" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3b-At-sGo">
+                                                    <rect key="frame" x="13" y="7" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -173,10 +187,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="E3f-EY-cNS"/>
                     <connections>
-                        <outlet property="addContactButton" destination="FH2-K5-o0o" id="2Sj-wE-BPC"/>
+                        <outlet property="customRecipientTextField" destination="ca9-WA-j7X" id="C2e-IN-UF2"/>
                         <outlet property="datePicker" destination="eoc-RU-Har" id="tB3-Pd-mYa"/>
-                        <outlet property="personLabel" destination="FkK-FE-jOP" id="Abc-4W-E0i"/>
-                        <outlet property="recipientView" destination="GBm-Zr-qJL" id="939-z9-lh1"/>
+                        <outlet property="leftSideImageView" destination="c3b-At-sGo" id="JYp-2W-eS8"/>
+                        <outlet property="personLabel" destination="FkK-FE-jOP" id="apB-L6-LFq"/>
+                        <outlet property="rightSideButton" destination="Nn3-j2-rC4" id="WRj-UK-ibn"/>
+                        <outlet property="rightSideImageView" destination="ViP-cU-hwO" id="5SI-LC-LmK"/>
                         <outlet property="textArea" destination="MLv-X8-lM5" id="cd9-iS-dDc"/>
                     </connections>
                 </tableViewController>

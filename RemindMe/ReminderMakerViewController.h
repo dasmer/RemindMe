@@ -11,6 +11,6 @@
 
 @import AddressBook;
 @import AddressBookUI;
-@interface ReminderMakerViewController : UITableViewController <PMEDatePickerDelegate,ABPeoplePickerNavigationControllerDelegate,UITextViewDelegate>
+@interface ReminderMakerViewController : UITableViewController <PMEDatePickerDelegate,ABPeoplePickerNavigationControllerDelegate,UITextViewDelegate,UITextFieldDelegate>
 
 @end

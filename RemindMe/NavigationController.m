@@ -11,6 +11,7 @@
 #import "UIColor+Custom.h"
 
 
+
 @interface NavigationController ()
 @property (strong,nonatomic) ADBannerView *iAd;
 @property (strong,nonatomic) Reminder *currentReminder;
@@ -38,50 +39,84 @@
 }
 
 - (void)showReminderForMyReminder: (Reminder *) myReminder{
-    if ([MFMessageComposeViewController canSendText])
-    {
-        self.currentReminder = myReminder;
-        MFMessageComposeViewController *mvc = [[MFMessageComposeViewController alloc] init];
-        [mvc.navigationBar setTintColor:[UIColor whiteColor]];
-        mvc.messageComposeDelegate = self;
-        [mvc setBody:myReminder.message];
-        [mvc setRecipients:@[myReminder.recipient]];
-        [self presentViewController:mvc animated:YES completion:nil];
+    self.currentReminder = myReminder;
+    NSInteger reminderType = [myReminder.type integerValue];
+    if (reminderType == ReminderTypeMessage){
+        if ([MFMessageComposeViewController canSendText])
+        {
+            
+            
+            MFMessageComposeViewController *mvc = [[MFMessageComposeViewController alloc] init];
+            [mvc.navigationBar setTintColor:[UIColor whiteColor]];
+            mvc.messageComposeDelegate = self;
+            [mvc setBody:myReminder.message];
+            [mvc setRecipients:@[myReminder.recipient]];
+            [self presentViewController:mvc animated:YES completion:nil];
+            
+            
+        }
+        else{
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Sent Texts" description:@"Your device is not setup to send texts" type:TWMessageBarMessageTypeError];
+        }
+
     }
-    else{
-        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Sent Texts" description:@"Your Device is not setup to send texts" type:TWMessageBarMessageTypeError];
+    else if (reminderType == ReminderTypeMail){
+        if ([MFMailComposeViewController canSendMail]){
+            MFMailComposeViewController *mvc = [[MFMailComposeViewController alloc] init];
+            [mvc.navigationBar setTintColor:[UIColor whiteColor]];
+            [mvc setMessageBody:myReminder.message isHTML:NO];
+            [mvc setToRecipients:@[myReminder.recipient]];
+            mvc.mailComposeDelegate = self;
+            [self presentViewController:mvc animated:YES completion:nil];
+        }
+        else{
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Cannot Sent Emails" description:@"Your device is not setup to send emails" type:TWMessageBarMessageTypeError];
+        }
     }
 }
 
-
+#pragma mark - MFMessageCompose Delegate Methods
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
-    
     if (result == MessageComposeResultSent){
-        
         [controller dismissViewControllerAnimated:YES completion:^{
         [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Message Sent" description:[NSString stringWithFormat:@"to %@", self.currentReminder.recipientName] type:TWMessageBarMessageTypeSuccess];
             [[DataStore instance] deleteReminder:self.currentReminder];
             self.currentReminder = nil;
         }];
-        
-
-
     }
     else if (result == MessageComposeResultCancelled){
-        
-        
-        NSLog(@"Hi %@", controller.body);
-        
         [[[UIAlertView alloc] initWithTitle:@"Delete Message?" message:@"This cannot be undone." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
         [controller dismissViewControllerAnimated:YES completion:nil];
 
     }
     else{
-    
-    [controller dismissViewControllerAnimated:YES completion:nil];
+        [controller dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
+#pragma mark - MFMailCompose Delegate Methods
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    if (result == MFMailComposeResultSent){
+        [controller dismissViewControllerAnimated:YES completion:^{
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Email Sent" description:[NSString stringWithFormat:@"to %@", self.currentReminder.recipientName] type:TWMessageBarMessageTypeSuccess];
+            [[DataStore instance] deleteReminder:self.currentReminder];
+            self.currentReminder = nil;
+        }];
+    }
+    else if (result == MFMailComposeResultCancelled){
+        [[[UIAlertView alloc] initWithTitle:@"Delete Email?" message:@"This cannot be undone." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
+        [controller dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    else{
+        [controller dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+#pragma mark - UIAlertView Delegate Methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){

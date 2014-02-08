@@ -122,17 +122,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Test");
     static NSString *CellIdentifier = @"Cell";
     ReminderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     Reminder *reminder = [self.frc objectAtIndexPath:indexPath];
+    
     cell.nameLabel.text = reminder.recipientName;
     cell.messageLabel.text = reminder.message;
     
+    if ([reminder reminderType] == ReminderTypeMessage){
     ECPhoneNumberFormatter *formatter = [[ECPhoneNumberFormatter alloc] init];
     NSString *formattedNumber = [formatter stringForObjectValue:reminder.recipient];
     cell.recipientLabel.text = formattedNumber;
+    }
+    else{
+        cell.recipientLabel.text = reminder.recipient;
+    }
     
     cell.myDate = reminder.fireDate;
     
@@ -147,7 +152,6 @@
 
     [[NSNotificationCenter defaultCenter] removeObserver:cell];
     [[NSNotificationCenter defaultCenter] addObserver:cell selector:@selector(checkIfFireDateIsPassed) name:kReminderFireDateCheckNotification object:nil];
-    // Configure the cell...
     
     return cell;
 }
@@ -187,9 +191,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     Reminder *reminder = [self.frc objectAtIndexPath:indexPath];
-
-    
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Send Message Now?" message:Nil delegate:nil cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Send %@ Now?", [reminder reminderActionType]] message:Nil delegate:nil cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
    av.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
        if (buttonIndex == 1){
            NavigationController *nc = (NavigationController *) self.navigationController;

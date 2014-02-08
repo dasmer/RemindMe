@@ -54,6 +54,40 @@
     return image;
 }
 
++ (UIImage *) minusCircleIconSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome minusSquareOIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
 
+
++ (UIImage *) userIconWithSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome userIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
+
++ (UIImage *) commentIconWithSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome commentIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
+
++ (UIImage *) envelopeIconWithSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome envelopeIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
+
++ (UIImage *) bookIconWithSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome bookIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
 
 @end

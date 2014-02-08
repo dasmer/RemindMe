@@ -14,4 +14,9 @@
 + (UIImage *) eraseIconSize:(float)size withColor:(UIColor *)color;
 + (UIImage *) checkIconSize:(float)size withColor:(UIColor *)color;
 + (UIImage *) plusCircleIconSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) minusCircleIconSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) userIconWithSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) commentIconWithSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) envelopeIconWithSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) bookIconWithSize:(float)size withColor:(UIColor *)color;
 @end

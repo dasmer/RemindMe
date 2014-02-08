@@ -13,7 +13,7 @@
 
 
 
-@interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate,UIAlertViewDelegate,ADBannerViewDelegate>
+@interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate,ADBannerViewDelegate>
 
 - (void)showReminderForMyReminder: (Reminder *) myReminder;
 - (void) showReminderForReminderObjectIDURIString: (NSString *) uriString;

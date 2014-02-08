@@ -14,7 +14,19 @@ NSString  *kReminderFireDateCheckNotification = @"FireDateCheck";
 
 @implementation Reminder (Methods)
 
+- (NSInteger)reminderType{
+    return [self.type integerValue];
+}
 
-
-
+- (NSString *)reminderActionType{
+    if ([self reminderType] == ReminderTypeMessage){
+        return @"Text";
+    }
+    else if ([self reminderType] == ReminderTypeMail){
+        return @"Email";
+    }
+    else{
+        return @"";
+    }
+}
 @end
