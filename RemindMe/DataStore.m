@@ -156,5 +156,47 @@
     }
 }
 
+#pragma mark - creating reminders
+
+- (BOOL) createNewReminderWithType: (NSInteger)type recipientName: (NSString *)recipientName recipient: (NSString *)recipient subject: (NSString *)subject message: (NSString *) message andFireDate: (NSDate *)fireDate{
+    
+    Reminder *newReminder = [NSEntityDescription insertNewObjectForEntityForName:@"Reminder" inManagedObjectContext:self.managedObjectContext];
+    if (!newReminder){
+        NSLog(@"failed to create new person");
+        return NO;
+    }
+    newReminder.type = [NSNumber numberWithInteger:type];
+    newReminder.recipientName = recipientName;
+    newReminder.recipient = recipient;
+    newReminder.subject = subject;
+    newReminder.message = message;
+    newReminder.fireDate = fireDate;
+    NSString *notificationAction = [newReminder reminderActionType];
+    
+    NSError *savingError = nil;
+    
+    if([self.managedObjectContext save:&savingError]){
+        if (![[newReminder objectID] isTemporaryID]){
+            NSLog(@"objectID is %@",[newReminder objectID]);
+            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+            localNotification.fireDate = fireDate;
+            localNotification.alertAction = @"Show me the item";
+            localNotification.alertBody =   [NSString stringWithFormat:@"%@ %@", notificationAction, recipientName];
+            localNotification.timeZone = [NSTimeZone defaultTimeZone];
+            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            NSDictionary *infoDictionary = [NSDictionary dictionaryWithObject:[[[newReminder objectID] URIRepresentation] absoluteString]  forKey:[[NSNumber numberWithInteger:kReminderObjectID] stringValue]];
+            localNotification.userInfo = infoDictionary;
+            localNotification.soundName = @"text_notification.mp3";
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+        NSLog(@"Saved reminder for type %ld recipientName %@ recipient %@ message %@ and fireDate %@", (long)type, recipientName,recipient,message,fireDate);
+        
+        return YES;
+    }
+    else{
+        NSLog(@"failed to save person with error: %@", savingError);
+        return NO;
+    }
+}
 
 @end

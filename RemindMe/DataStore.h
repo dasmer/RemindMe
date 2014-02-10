@@ -19,7 +19,8 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
 - (BOOL) deleteReminder: (Reminder *) reminderToDelete;
+- (BOOL) createNewReminderWithType: (NSInteger)type recipientName: (NSString *)recipientName recipient: (NSString *)recipient subject: (NSString *)subject message: (NSString *) message andFireDate: (NSDate *)fireDate;
+
 
 @end

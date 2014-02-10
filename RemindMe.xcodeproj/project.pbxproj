@@ -16,6 +16,7 @@
 		2F08FA4D187924F800A4BFEA /* text_notification.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F08FA4C187924F800A4BFEA /* text_notification.mp3 */; };
 		2F08FA531879F70000A4BFEA /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F08FA521879F70000A4BFEA /* Reminder.m */; };
 		2F9AC56F18A83D9B00E54D79 /* NSString+Methods.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9AC56E18A83D9B00E54D79 /* NSString+Methods.m */; };
+		2F9AC57218A9404E00E54D79 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F9AC57118A9404E00E54D79 /* NSDate-Utilities.m */; };
 		2FA0B98C18776D9A0018EB0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98B18776D9A0018EB0B /* Foundation.framework */; };
 		2FA0B98E18776D9A0018EB0B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98D18776D9A0018EB0B /* CoreGraphics.framework */; };
 		2FA0B99018776D9A0018EB0B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FA0B98F18776D9A0018EB0B /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 		2F08FA521879F70000A4BFEA /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		2F9AC56D18A83D9B00E54D79 /* NSString+Methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Methods.h"; sourceTree = "<group>"; };
 		2F9AC56E18A83D9B00E54D79 /* NSString+Methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Methods.m"; sourceTree = "<group>"; };
+		2F9AC57018A9404E00E54D79 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
+		2F9AC57118A9404E00E54D79 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
 		2FA0B98818776D9A0018EB0B /* RemindMe - Text Scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RemindMe - Text Scheduler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA0B98B18776D9A0018EB0B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FA0B98D18776D9A0018EB0B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 		2F1CF7A918A281FA0088C69A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				2F9AC57018A9404E00E54D79 /* NSDate-Utilities.h */,
+				2F9AC57118A9404E00E54D79 /* NSDate-Utilities.m */,
 				2FA0B9C0187772B00018EB0B /* UIImage+FontAwesome.h */,
 				2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */,
 				2FA0B9C3187772BE0018EB0B /* UIColor+Custom.h */,
@@ -375,6 +380,7 @@
 				2F08FA261877C18400A4BFEA /* DataStore.m in Sources */,
 				2FA0B99818776D9A0018EB0B /* main.m in Sources */,
 				2F08FA531879F70000A4BFEA /* Reminder.m in Sources */,
+				2F9AC57218A9404E00E54D79 /* NSDate-Utilities.m in Sources */,
 				2F08F9D918778FF500A4BFEA /* PMEDatePicker.m in Sources */,
 				2F08FA481878989A00A4BFEA /* ReminderCell.m in Sources */,
 			);

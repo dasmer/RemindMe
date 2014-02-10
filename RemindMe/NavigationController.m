@@ -44,8 +44,6 @@
     if (reminderType == ReminderTypeMessage){
         if ([MFMessageComposeViewController canSendText])
         {
-            
-            
             MFMessageComposeViewController *mvc = [[MFMessageComposeViewController alloc] init];
             [mvc.navigationBar setTintColor:[UIColor whiteColor]];
             mvc.messageComposeDelegate = self;
@@ -65,6 +63,7 @@
             MFMailComposeViewController *mvc = [[MFMailComposeViewController alloc] init];
             [mvc.navigationBar setTintColor:[UIColor whiteColor]];
             [mvc setMessageBody:myReminder.message isHTML:NO];
+            [mvc setSubject:myReminder.subject];
             [mvc setToRecipients:@[myReminder.recipient]];
             mvc.mailComposeDelegate = self;
             [self presentViewController:mvc animated:YES completion:nil];

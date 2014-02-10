@@ -15,14 +15,13 @@
 #import "ECPhoneNumberFormatter.h"
 #import "NSString+Methods.h"
 
-
 @interface ReminderMakerViewController ()
-
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
-
 @property (weak, nonatomic) IBOutlet UIButton *addContactButton;
+@property (weak, nonatomic) IBOutlet UITableViewCell *subjectCell;
+@property (weak, nonatomic) IBOutlet UITextField *subjectField;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
 @property (weak, nonatomic) IBOutlet PMEDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UILabel *personLabel;
@@ -30,7 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *leftSideImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightSideImageView;
 @property (weak, nonatomic) IBOutlet UITextField *customRecipientTextField;
-
 @property (strong,nonatomic) NSDate *selectedDate;
 @property (strong,nonatomic) NSString *recipient;
 @property (assign,nonatomic) NSInteger currentMessageType;
@@ -51,14 +49,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.managedObjectContext = [DataStore instance].managedObjectContext;
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dropKeyboard)];
     self.title = @"Compose";
-//    [self.addContactButton setImage:[UIImage plusCircleIconSize:self.addContactButton.frame.size.width withColor:[UIColor twitterColor]] forState:UIControlStateNormal];
     self.datePicker.dateDelegate = self;
     [self.datePicker setMinimumDate:[NSDate date]];
     [self.datePicker setDate:[NSDate date] animated:NO];
     self.textArea.delegate = self;
+    self.subjectField.delegate = self;
     [self.personLabel setTextColor:[UIColor twitterColor]];
     self.personLabel.text = @"";
     self.currentMessageType = ReminderTypeUnknown;
@@ -71,7 +68,6 @@
     self.tableView.contentSize = CGSizeMake(self.tableView.frame.size.width, self.tableView.frame.size.height + [navController iAdHeight]);
 }
 
-
 - (void)setCurrentMessageType:(NSInteger)currentMessageType{
     _currentMessageType = currentMessageType;
     CGFloat leftSizeImageViewWidth = CGRectGetWidth(self.leftSideImageView.frame);
@@ -82,7 +78,10 @@
             [self.customRecipientTextField setHidden:YES];
             [self.rightSideImageView setImage:[UIImage minusCircleIconSize:rightSizeImageViewWidth withColor:[UIColor redColor]]];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveReminder)];
-
+            self.subjectField.text = nil;
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            if (!self.selectedDate)
+                [self.datePicker setDate:[NSDate date] animated:YES];
             break;
         }
         case ReminderTypeMail:{
@@ -90,7 +89,9 @@
             [self.customRecipientTextField setHidden:YES];
             [self.rightSideImageView setImage:[UIImage minusCircleIconSize:rightSizeImageViewWidth withColor:[UIColor redColor]]];
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveReminder)];
-
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            if (!self.selectedDate)
+                [self.datePicker setDate:[NSDate date] animated:YES];
             break;
         }
         case ReminderTypeUnknown:{
@@ -133,7 +134,7 @@
 
     
     if (readyToSave){
-        if([self createNewReminderWithType:self.currentMessageType recipientName:self.personLabel.text recipient:self.recipient message:self.textArea.text andFireDate:self.selectedDate]){
+        if ([[DataStore instance] createNewReminderWithType:self.currentMessageType recipientName:self.personLabel.text recipient:self.recipient subject:self.subjectField.text message:self.textArea.text andFireDate:self.selectedDate]){
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
@@ -172,21 +173,18 @@
     			NSString *recipient = (__bridge NSString *) addressBookRef;
     			CFRelease(addressBookRef);
     			self.recipient = [NSString stringWithFormat:@"%@", recipient];
-                if (property == kABPersonPhoneProperty){
-                    self.currentMessageType = ReminderTypeMessage;
-                }
-                else if (property == kABPersonEmailProperty){
-                    self.currentMessageType = ReminderTypeMail;
-                }
-                else{
-                    self.currentMessageType = ReminderTypeUnknown;
-                }
             }
     	}
         [peoplePicker dismissViewControllerAnimated:YES completion:^{
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            if (!self.selectedDate)
-                [self.datePicker setDate:[NSDate date] animated:YES];
+            if (property == kABPersonPhoneProperty){
+                self.currentMessageType = ReminderTypeMessage;
+            }
+            else if (property == kABPersonEmailProperty){
+                self.currentMessageType = ReminderTypeMail;
+            }
+            else{
+                self.currentMessageType = ReminderTypeUnknown;
+            }
         }];
     }
     else{
@@ -205,17 +203,13 @@
     NSString *firstName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonFirstNameProperty);
     NSString *lastName = (__bridge NSString *)ABRecordCopyValue(person, kABPersonLastNameProperty);
     NSString *biz = (__bridge NSString *)ABRecordCopyValue(person, kABPersonOrganizationProperty);
-    
-    
     if ((!firstName) && !(lastName))
     {
         if (biz) return biz;
         return @"[No name supplied]";
     }
-    
     if (!lastName) lastName = @"";
     if (!firstName) firstName = @"";
-    
     return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
@@ -243,48 +237,6 @@
     [self.view removeGestureRecognizer:self.tap];
 }
 
-
-#pragma mark - Core Data
-- (BOOL) createNewReminderWithType: (NSInteger) type recipientName: (NSString *) recipientName recipient: (NSString *) recipient message: (NSString *) message andFireDate: (NSDate *) fireDate{
-    
-    Reminder *newReminder = [NSEntityDescription insertNewObjectForEntityForName:@"Reminder" inManagedObjectContext:self.managedObjectContext];
-    if (!newReminder){
-        NSLog(@"failed to create new person");
-        return NO;
-    }
-    newReminder.type = [NSNumber numberWithInteger:type];
-    newReminder.recipientName = recipientName;
-    newReminder.recipient = recipient;
-    newReminder.message = message;
-    newReminder.fireDate = fireDate;
-    NSString *notificationAction = [newReminder reminderActionType];
-
-    NSError *savingError = nil;
-    
-    if([self.managedObjectContext save:&savingError]){
-        if (![[newReminder objectID] isTemporaryID]){
-            NSLog(@"objectID is %@",[newReminder objectID]);
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-            localNotification.fireDate = fireDate;
-            localNotification.alertAction = @"Show me the item";
-            localNotification.alertBody =   [NSString stringWithFormat:@"%@ %@", notificationAction, recipientName];
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-            NSDictionary *infoDictionary = [NSDictionary dictionaryWithObject:[[[newReminder objectID] URIRepresentation] absoluteString]  forKey:[[NSNumber numberWithInteger:kReminderObjectID] stringValue]];
-            localNotification.userInfo = infoDictionary;
-            localNotification.soundName = @"text_notification.mp3";
-            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-        }
-        NSLog(@"Saved reminder for type %ld recipientName %@ recipient %@ message %@ and fireDate %@", (long)type, recipientName,recipient,message,fireDate);
-        
-        return YES;
-    }
-    else{
-        NSLog(@"failed to save person with error: %@", savingError);
-        return NO;
-    }
-}
-
 #pragma mark - Choose Recipient Methods
 
 - (void) constructRecipientCell{
@@ -308,15 +260,16 @@
     }
     else{
         self.currentMessageType = ReminderTypeUnknown;
-        
-        
     }
 }
 
 #pragma mark - UITextFieldDelegate Methods
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (textField == self.customRecipientTextField){
     [self.rightSideImageView setImage:[UIImage checkOSquareIconWithSize:CGRectGetWidth(self.rightSideImageView.frame) withColor:[UIColor twitterColor]]];
+    }
     return YES;
 }
 
@@ -343,14 +296,14 @@
         }
         else{
             self.currentMessageType = ReminderTypeUnknown;
+            if ([textField.text hasContent])
             [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Type a valid phone # or email or tap + to use your address book." type:TWMessageBarMessageTypeInfo];
             
         }
+        textField.text = @"";
+
     }
-    textField.text = @"";
     return YES;
 }
-
-
 
 @end
