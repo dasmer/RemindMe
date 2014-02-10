@@ -7,19 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reminder+Methods.h"
 
 @interface ReminderCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *reminderTypeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *recipientLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *messageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
-
-@property (strong,nonatomic) NSDate *myDate;
-
-- (void) checkIfFireDateIsPassed;
+@property (strong,nonatomic) Reminder *reminder;
 
 @end

@@ -296,9 +296,7 @@
         }
         else{
             self.currentMessageType = ReminderTypeUnknown;
-            if ([textField.text hasContent])
             [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Type a valid phone # or email or tap + to use your address book." type:TWMessageBarMessageTypeInfo];
-            
         }
         textField.text = @"";
 

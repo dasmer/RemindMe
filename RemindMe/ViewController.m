@@ -128,65 +128,10 @@
 {
     static NSString *CellIdentifier = @"Cell";
     ReminderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    Reminder *reminder = [self.frc objectAtIndexPath:indexPath];
-    
-    cell.messageLabel.text = reminder.message;
-    
-    UIColor *reminderTypeImageViewColor = [UIColor twitterColor];
-    CGFloat reminderTypeImageViewWidth = CGRectGetWidth(cell.reminderTypeImageView.frame);
-    NSString *recipient;
-    if ([reminder reminderType] == ReminderTypeMessage){
-    ECPhoneNumberFormatter *formatter = [[ECPhoneNumberFormatter alloc] init];
-    NSString *formattedNumber = [formatter stringForObjectValue:reminder.recipient];
-        recipient = formattedNumber;
-        cell.reminderTypeImageView.image = [UIImage commentIconWithSize:reminderTypeImageViewWidth withColor:reminderTypeImageViewColor];
-    }
-    else if ([reminder reminderType] == ReminderTypeMail){
-        recipient = reminder.recipient;
-        cell.reminderTypeImageView.image = [UIImage envelopeIconWithSize:reminderTypeImageViewWidth withColor:reminderTypeImageViewColor];
-    }
-    
-    if (![reminder.recipient isEqualToString:reminder.recipientName]){
-        cell.recipientLabel.text = recipient;
-        cell.nameLabel.text = reminder.recipientName;
-    }
-    else{
-        cell.nameLabel.text = recipient;
-    }
-    
-    NSDate *fireDate = reminder.fireDate;
-    cell.myDate = fireDate;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MMM dd yyyy"];
-    cell.dateLabel.text = [dateFormatter stringFromDate:fireDate];
-    
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    [timeFormatter setDateFormat:@"hh:mma"];
-    cell.timeLabel.text = [timeFormatter stringFromDate:fireDate];
-    
-    if ([fireDate isTomorrow]){
-        cell.dayLabel.text = @"Tomorrow";
-    }
-    else if ([fireDate isToday]){
-        cell.dayLabel.text = @"Today";
-        
-    }
-    else if ([fireDate isYesterday]){
-        cell.dayLabel.text = @"Yesterday";
-    }
-    else{
-        NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-        [dayFormatter setDateFormat:@"EEEE"];
-        cell.dayLabel.text = [dayFormatter stringFromDate:fireDate];
-    }
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:cell];
-    [[NSNotificationCenter defaultCenter] addObserver:cell selector:@selector(checkIfFireDateIsPassed) name:kReminderFireDateCheckNotification object:nil];
-    
+    cell.reminder = [self.frc objectAtIndexPath:indexPath];
     return cell;
 }
+
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.tableView endUpdates];
 }
