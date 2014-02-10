@@ -13,6 +13,7 @@
 #import "DataStore.h"
 #import "NavigationController.h"
 #import "ECPhoneNumberFormatter.h"
+#import "NSString+Methods.h"
 
 
 @interface ReminderMakerViewController ()
@@ -20,7 +21,6 @@
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong,nonatomic) UITapGestureRecognizer *tap;
-
 
 @property (weak, nonatomic) IBOutlet UIButton *addContactButton;
 @property (weak, nonatomic) IBOutlet UITextView *textArea;
@@ -285,55 +285,6 @@
     }
 }
 
-#pragma mark - CommonClassFunctions
-+  (BOOL) isContentInString: (NSString *) string{
-    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    if ([[string stringByTrimmingCharactersInSet: set] length] == 0)
-    {
-        return NO;
-    }
-    else{
-        return YES;
-    }
-}
-
-
-+ (BOOL) isValidEmailFromString:(NSString *)checkString
-{
-    BOOL stricterFilter = YES; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
-    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
-    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:checkString];
-}
-
-+ (NSString *) stringByExtractingPhoneNumberComponentsInString: (NSString *) string{
-    NSArray *charactersToRemove = @[@" ",@"(",@")",@"-"];
-    for (NSString *characterToRemove in charactersToRemove){
-        string = [string stringByReplacingOccurrencesOfString:characterToRemove withString:@""];
-    }
-    return string;
-}
-
-+ (BOOL) isPhoneNumberInString:(NSString *) string{
-    string = [[self class] stringByExtractingPhoneNumberComponentsInString:string];
-    if ([string length] >= 7 && [string length] <= 15 && [[self class] isAllDigitsInString:string]){
-        return YES;
-    }
-    else{
-        return NO;
-    }
-}
-
-+ (BOOL) isAllDigitsInString: (NSString *) string
-{
-    NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
-    NSRange r = [string rangeOfCharacterFromSet: nonNumbers];
-    return r.location == NSNotFound;
-}
-
-
 #pragma mark - Choose Recipient Methods
 
 - (void) constructRecipientCell{
@@ -365,6 +316,7 @@
 #pragma mark - UITextFieldDelegate Methods
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    [self.rightSideImageView setImage:[UIImage checkOSquareIconWithSize:CGRectGetWidth(self.rightSideImageView.frame) withColor:[UIColor twitterColor]]];
     return YES;
 }
 
@@ -377,20 +329,21 @@
 - (BOOL) textFieldShouldEndEditing:(UITextField *)textField{
     
     if (textField == self.customRecipientTextField){
-        if ([[self class] isValidEmailFromString:textField.text]){
+        if ([textField.text isValidEmail]){
             self.personLabel.text = textField.text;
             self.currentMessageType = ReminderTypeMail;
             self.recipient = textField.text;
         }
-        else if ([[self class] isPhoneNumberInString:textField.text]){
+        else if ([textField.text isPhoneNumber]){
             ECPhoneNumberFormatter *formatter = [[ECPhoneNumberFormatter alloc] init];
             NSString *formattedNumber = [formatter stringForObjectValue:textField.text];
             self.personLabel.text = formattedNumber;
             self.currentMessageType = ReminderTypeMessage;
-            self.recipient = textField.text;
+            self.recipient = [textField.text stringByExtractingPhoneNumberComponents];
         }
         else{
-            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Please type in a valid Phone Number or Date" type:TWMessageBarMessageTypeError];
+            self.currentMessageType = ReminderTypeUnknown;
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Type a valid phone # or email or tap + to use your address book." type:TWMessageBarMessageTypeInfo];
             
         }
     }

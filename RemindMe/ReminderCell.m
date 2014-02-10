@@ -48,15 +48,11 @@
 }
 
 - (void) checkIfFireDateIsPassed{
-    NSLog(@"chekcing if fire date passed");
-    
     if ([self.myDate timeIntervalSinceNow] < 0){
-//        self.backgroundColor = [UIColor redColor];
         [self.warningImageView setHidden:NO];
         [self.passedDueLabel setHidden:NO];
     }
     else{
-//        self.backgroundColor = [UIColor whiteColor];
         [self.warningImageView setHidden:YES];
         [self.passedDueLabel setHidden:YES];
     }

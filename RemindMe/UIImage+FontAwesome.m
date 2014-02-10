@@ -90,4 +90,12 @@
     return image;
 }
 
++ (UIImage *) checkOSquareIconWithSize:(float)size withColor:(UIColor *)color{
+    FAKFontAwesome *locationIcon = [FAKFontAwesome checkSquareOIconWithSize:size];
+    [locationIcon addAttribute:NSForegroundColorAttributeName value:color];
+    UIImage *image =  [locationIcon imageWithSize:CGSizeMake(size, size)];
+    return image;
+}
+
+
 @end

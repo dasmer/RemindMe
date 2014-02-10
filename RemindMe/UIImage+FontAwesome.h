@@ -19,4 +19,5 @@
 + (UIImage *) commentIconWithSize:(float)size withColor:(UIColor *)color;
 + (UIImage *) envelopeIconWithSize:(float)size withColor:(UIColor *)color;
 + (UIImage *) bookIconWithSize:(float)size withColor:(UIColor *)color;
++ (UIImage *) checkOSquareIconWithSize:(float)size withColor:(UIColor *)color;
 @end
