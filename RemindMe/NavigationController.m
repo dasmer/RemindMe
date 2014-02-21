@@ -9,8 +9,10 @@
 #import "NavigationController.h"
 #import "TWMessageBarManager.h"
 #import "UIColor+Custom.h"
+#import "RemindMeIAPHelper.h"
 
-
+const NSInteger NumberOfAppOpensBeforeAds = 2;
+const NSString *kNumberOfAppOpens = @"NumberOfAppOpens";
 
 @interface NavigationController ()
 @property (strong,nonatomic) ADBannerView *iAd;
@@ -19,10 +21,16 @@
 
 @implementation NavigationController
 
+
+- (void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self constructAd];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iapHelperProductWasPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
 }
 
 - (void)showReminderForReminderObjectIDURIString:(NSString *)uriString{
@@ -127,6 +135,7 @@
 #pragma mark - iAd Methods
 
 - (void) constructAd{
+    NSLog(@"construct iAd called");
     self.iAd = [[ADBannerView alloc] init];
     self.iAd.hidden = YES;
     self.iAd.delegate = self;
@@ -149,6 +158,33 @@
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
     banner.hidden = NO;
+}
+
+#pragma mark - App Notification Methods
+
+- (void)applicationDidBecomeActive:(NSNotification*)note {
+    NSInteger numberOfAppOpens = [[NSUserDefaults standardUserDefaults] integerForKey:[kNumberOfAppOpens copy]];
+    numberOfAppOpens ++;
+    [[NSUserDefaults standardUserDefaults] setObject:@(numberOfAppOpens) forKey:[kNumberOfAppOpens copy]];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"applicationDidBecomeActive and app has been opened %ld times",(long)numberOfAppOpens);
+    BOOL userBoughtIAPAdBlock = [[RemindMeIAPHelper sharedInstance] productPurchased:IAPEmailAdBlockProductIdentifier];
+    if (numberOfAppOpens > NumberOfAppOpensBeforeAds && !self.iAd && !userBoughtIAPAdBlock){
+    [self constructAd];
+    }
+}
+
+- (void) iapHelperProductWasPurchased:(NSNotification*)note {
+    NSLog(@"iapHelperProductWasPurchased called");
+    if ([((NSString *) note.object) isEqualToString:IAPEmailAdBlockProductIdentifier]){
+        [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Thanks for your support" description:@"Enabled Emails and Disabled iAds" type:TWMessageBarMessageTypeSuccess];
+        NSLog(@"iapHelperProductWasPurchased called and ads were told to be hidden");
+        if (self.iAd){
+        self.iAd.hidden = YES;
+        [self.iAd removeFromSuperview];
+        self.iAd = nil;
+        }
+    }
 }
 
 @end

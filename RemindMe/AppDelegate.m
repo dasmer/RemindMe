@@ -10,15 +10,14 @@
 #import "UIColor+Custom.h"
 #import "NavigationController.h"
 #import "Reminder+Methods.h"
+#import "RemindMeIAPHelper.h"
 
 @implementation AppDelegate
-
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [RemindMeIAPHelper sharedInstance];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
@@ -43,6 +42,16 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kReminderFireDateCheckNotification
      object:self];
+    
+    //To be deleted for testing only
+    [[RemindMeIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success){
+            NSLog(@"product description = %@", [products description]);
+        }
+        else{
+            NSLog(@"failed");
+        }
+    }];
     
     return YES;
 }
@@ -95,7 +104,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kReminderFireDateCheckNotification
      object:self];

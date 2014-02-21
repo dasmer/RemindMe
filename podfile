@@ -3,3 +3,4 @@ pod 'FontAwesomeKit'
 pod 'TWMessageBarManager'
 pod 'ECPhoneNumberFormatter'
 pod 'UIAlertView+Blocks'
+pod "GoogleAnalytics-iOS-SDK"

@@ -14,6 +14,9 @@
 #import "NavigationController.h"
 #import "ECPhoneNumberFormatter.h"
 #import "NSString+Methods.h"
+#import "RemindMeIAPHelper.h"
+#import "UIAlertView+Blocks.h"
+#import "IAPTableViewController.h"
 
 @interface ReminderMakerViewController ()
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -85,13 +88,22 @@
             break;
         }
         case ReminderTypeMail:{
-            [self.leftSideImageView setImage:[UIImage envelopeIconWithSize:leftSizeImageViewWidth withColor:[UIColor twitterColor]]];
-            [self.customRecipientTextField setHidden:YES];
-            [self.rightSideImageView setImage:[UIImage minusCircleIconSize:rightSizeImageViewWidth withColor:[UIColor redColor]]];
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveReminder)];
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-            if (!self.selectedDate)
-                [self.datePicker setDate:[NSDate date] animated:YES];
+            if ([[RemindMeIAPHelper sharedInstance] productPurchased:IAPEmailAdBlockProductIdentifier]){
+                [self.leftSideImageView setImage:[UIImage envelopeIconWithSize:leftSizeImageViewWidth withColor:[UIColor twitterColor]]];
+                [self.customRecipientTextField setHidden:YES];
+                [self.rightSideImageView setImage:[UIImage minusCircleIconSize:rightSizeImageViewWidth withColor:[UIColor redColor]]];
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveReminder)];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                if (!self.selectedDate)
+                    [self.datePicker setDate:[NSDate date] animated:YES];
+            }
+            else{
+                self.currentMessageType = ReminderTypeUnknown;
+                self.recipient = nil;
+                self.personLabel.text = @"";
+                IAPTableViewController *iapVC = [[IAPTableViewController alloc] init];
+                [self.navigationController pushViewController:iapVC animated:YES];
+            }
             break;
         }
         case ReminderTypeUnknown:{
@@ -154,8 +166,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 #pragma mark - People Picker Delegate Methods
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
@@ -282,10 +292,11 @@
 - (BOOL) textFieldShouldEndEditing:(UITextField *)textField{
     
     if (textField == self.customRecipientTextField){
+        NSLog(@"textFieldShouldEndEditing called");
         if ([textField.text isValidEmail]){
-            self.personLabel.text = textField.text;
-            self.currentMessageType = ReminderTypeMail;
-            self.recipient = textField.text;
+                self.personLabel.text = textField.text;
+                self.recipient = textField.text;
+                self.currentMessageType = ReminderTypeMail;
         }
         else if ([textField.text isPhoneNumber]){
             ECPhoneNumberFormatter *formatter = [[ECPhoneNumberFormatter alloc] init];
@@ -296,7 +307,9 @@
         }
         else{
             self.currentMessageType = ReminderTypeUnknown;
-            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Type a valid phone # or email or tap + to use your address book." type:TWMessageBarMessageTypeInfo];
+            if (self.navigationController.topViewController == self){
+            [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Not a Valid Entry" description:@"Retry or tap + to use address book." type:TWMessageBarMessageTypeInfo];
+            }
         }
         textField.text = @"";
 

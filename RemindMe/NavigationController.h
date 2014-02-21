@@ -11,8 +11,6 @@
 @import MessageUI;
 @import iAd;
 
-
-
 @interface NavigationController : UINavigationController <MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate,ADBannerViewDelegate>
 
 - (void)showReminderForMyReminder: (Reminder *) myReminder;

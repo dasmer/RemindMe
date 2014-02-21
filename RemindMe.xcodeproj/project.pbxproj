@@ -34,6 +34,9 @@
 		2FA0B9C2187772B00018EB0B /* UIImage+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C1187772B00018EB0B /* UIImage+FontAwesome.m */; };
 		2FA0B9C5187772BE0018EB0B /* UIColor+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */; };
 		2FA0B9C8187774DB0018EB0B /* ReminderMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */; };
+		2FA6853E18B7A27900AC837C /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA6853D18B7A27900AC837C /* IAPHelper.m */; };
+		2FA6854118B7A6E900AC837C /* RemindMeIAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA6854018B7A6E900AC837C /* RemindMeIAPHelper.m */; };
+		2FA6854518B7CA5000AC837C /* IAPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA6854418B7CA5000AC837C /* IAPTableViewController.m */; };
 		E3EFBD6104A045A8B831555F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 909E5F5386BA4E3E964E3F59 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,12 @@
 		2FA0B9C4187772BE0018EB0B /* UIColor+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Custom.m"; sourceTree = "<group>"; };
 		2FA0B9C6187774DB0018EB0B /* ReminderMakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReminderMakerViewController.h; sourceTree = "<group>"; };
 		2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReminderMakerViewController.m; sourceTree = "<group>"; };
+		2FA6853C18B7A27900AC837C /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		2FA6853D18B7A27900AC837C /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		2FA6853F18B7A6E900AC837C /* RemindMeIAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindMeIAPHelper.h; sourceTree = "<group>"; };
+		2FA6854018B7A6E900AC837C /* RemindMeIAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindMeIAPHelper.m; sourceTree = "<group>"; };
+		2FA6854318B7CA5000AC837C /* IAPTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTableViewController.h; sourceTree = "<group>"; };
+		2FA6854418B7CA5000AC837C /* IAPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTableViewController.m; sourceTree = "<group>"; };
 		909E5F5386BA4E3E964E3F59 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBEB4D869300429BADFC1777 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +202,8 @@
 				2FA0B9C7187774DB0018EB0B /* ReminderMakerViewController.m */,
 				2F08FA491878C19000A4BFEA /* NavigationController.h */,
 				2F08FA4A1878C19000A4BFEA /* NavigationController.m */,
+				2FA6854318B7CA5000AC837C /* IAPTableViewController.h */,
+				2FA6854418B7CA5000AC837C /* IAPTableViewController.m */,
 				2F08FA2D1877DA0C00A4BFEA /* Model */,
 				2FA0B9A318776D9A0018EB0B /* Images.xcassets */,
 				2FA0B99218776D9A0018EB0B /* Supporting Files */,
@@ -204,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				2F1CF7A918A281FA0088C69A /* Categories */,
+				2FA6854218B7A6F700AC837C /* In App Purchase Helpers */,
 				2F08F9D718778FF500A4BFEA /* PMEDatePicker.h */,
 				2F08F9D818778FF500A4BFEA /* PMEDatePicker.m */,
 				2F08FA4C187924F800A4BFEA /* text_notification.mp3 */,
@@ -233,6 +245,17 @@
 				2FA0B9B318776D9A0018EB0B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2FA6854218B7A6F700AC837C /* In App Purchase Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2FA6853F18B7A6E900AC837C /* RemindMeIAPHelper.h */,
+				2FA6854018B7A6E900AC837C /* RemindMeIAPHelper.m */,
+				2FA6853C18B7A27900AC837C /* IAPHelper.h */,
+				2FA6853D18B7A27900AC837C /* IAPHelper.m */,
+			);
+			name = "In App Purchase Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA6853E18B7A27900AC837C /* IAPHelper.m in Sources */,
 				2F9AC56F18A83D9B00E54D79 /* NSString+Methods.m in Sources */,
 				2FA0B9C2187772B00018EB0B /* UIImage+FontAwesome.m in Sources */,
 				2FA0B9C5187772BE0018EB0B /* UIColor+Custom.m in Sources */,
@@ -379,10 +403,12 @@
 				2F08FA291877D5CA00A4BFEA /* Model.xcdatamodeld in Sources */,
 				2F08FA261877C18400A4BFEA /* DataStore.m in Sources */,
 				2FA0B99818776D9A0018EB0B /* main.m in Sources */,
+				2FA6854518B7CA5000AC837C /* IAPTableViewController.m in Sources */,
 				2F08FA531879F70000A4BFEA /* Reminder.m in Sources */,
 				2F9AC57218A9404E00E54D79 /* NSDate-Utilities.m in Sources */,
 				2F08F9D918778FF500A4BFEA /* PMEDatePicker.m in Sources */,
 				2F08FA481878989A00A4BFEA /* ReminderCell.m in Sources */,
+				2FA6854118B7A6E900AC837C /* RemindMeIAPHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
