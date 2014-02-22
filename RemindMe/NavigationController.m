@@ -180,6 +180,7 @@ const NSString *kNumberOfAppOpens = @"NumberOfAppOpens";
     numberOfAppOpens ++;
     [[NSUserDefaults standardUserDefaults] setObject:@(numberOfAppOpens) forKey:[kNumberOfAppOpens copy]];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ns_notification" action:@"app_opened" label:@"AppDidBecomeActive" value:@(numberOfAppOpens)] build]];
     NSLog(@"applicationDidBecomeActive and app has been opened %ld times",(long)numberOfAppOpens);
     BOOL userBoughtIAPAdBlock = [[RemindMeIAPHelper sharedInstance] productPurchased:IAPEmailAdBlockProductIdentifier];
     if (numberOfAppOpens > NumberOfAppOpensBeforeAds && !self.iAd && !userBoughtIAPAdBlock){

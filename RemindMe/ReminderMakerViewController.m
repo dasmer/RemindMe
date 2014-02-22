@@ -15,7 +15,6 @@
 #import "ECPhoneNumberFormatter.h"
 #import "NSString+Methods.h"
 #import "RemindMeIAPHelper.h"
-#import "UIAlertView+Blocks.h"
 #import "IAPTableViewController.h"
 
 @interface ReminderMakerViewController ()
