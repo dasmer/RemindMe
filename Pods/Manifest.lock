@@ -15,18 +15,21 @@ PODS:
     - FontAwesomeKit/Core
   - FontAwesomeKit/Zocial (2.1.3):
     - FontAwesomeKit/Core
+  - GoogleAnalytics-iOS-SDK (3.0.3)
   - TWMessageBarManager (1.3.0)
   - UIAlertView+Blocks (0.7)
 
 DEPENDENCIES:
   - ECPhoneNumberFormatter
   - FontAwesomeKit
+  - GoogleAnalytics-iOS-SDK
   - TWMessageBarManager
   - UIAlertView+Blocks
 
 SPEC CHECKSUMS:
   ECPhoneNumberFormatter: 6da090a89f87e784b6bdc058d86cc40e5ef17e79
   FontAwesomeKit: 6aae55f9758b24d44a7ddaf4dc00dc8d23dff99a
+  GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
   TWMessageBarManager: 82343e43813dba4e66e75bc73d265a361a661eed
   UIAlertView+Blocks: 7e876c2bace976306640443745b57912565d840d
 

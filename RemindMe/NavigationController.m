@@ -85,41 +85,54 @@ const NSString *kNumberOfAppOpens = @"NumberOfAppOpens";
 #pragma mark - MFMessageCompose Delegate Methods
 
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    NSString *eventLabel;
+    NSTimeInterval secondsSince = [[NSDate date] timeIntervalSinceDate:self.currentReminder.fireDate];
     if (result == MessageComposeResultSent){
         [controller dismissViewControllerAnimated:YES completion:^{
         [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Message Sent" description:[NSString stringWithFormat:@"to %@", self.currentReminder.recipientName] type:TWMessageBarMessageTypeSuccess];
             [[DataStore instance] deleteReminder:self.currentReminder];
             self.currentReminder = nil;
         }];
+        eventLabel = @"MessageComposeResultSent";
     }
     else if (result == MessageComposeResultCancelled){
         [[[UIAlertView alloc] initWithTitle:@"Delete Message?" message:@"This cannot be undone." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
         [controller dismissViewControllerAnimated:YES completion:nil];
-
+        eventLabel = @"MessageComposeResultCancelled";
     }
     else{
         [controller dismissViewControllerAnimated:YES completion:nil];
+        eventLabel = @"MessageComposeResultUnknown";
+
     }
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"messsagevc_finished" label:eventLabel value:@(secondsSince)] build]];
 }
 
 #pragma mark - MFMailCompose Delegate Methods
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    NSString *eventLabel;
+    NSTimeInterval secondsSince = [[NSDate date] timeIntervalSinceDate:self.currentReminder.fireDate];
     if (result == MFMailComposeResultSent){
         [controller dismissViewControllerAnimated:YES completion:^{
             [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Email Sent" description:[NSString stringWithFormat:@"to %@", self.currentReminder.recipientName] type:TWMessageBarMessageTypeSuccess];
             [[DataStore instance] deleteReminder:self.currentReminder];
             self.currentReminder = nil;
         }];
+        eventLabel = @"MailComposeResultSent";
     }
     else if (result == MFMailComposeResultCancelled){
         [[[UIAlertView alloc] initWithTitle:@"Delete Email?" message:@"This cannot be undone." delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil] show];
         [controller dismissViewControllerAnimated:YES completion:nil];
+        eventLabel = @"MailComposeResultCanceled";
         
     }
     else{
         [controller dismissViewControllerAnimated:YES completion:nil];
+        eventLabel = @"MailComposeResultUnknown";
+
     }
+        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"mailvc_finished" label:eventLabel value:@(secondsSince)] build]];
 }
 
 
@@ -176,13 +189,14 @@ const NSString *kNumberOfAppOpens = @"NumberOfAppOpens";
 
 - (void) iapHelperProductWasPurchased:(NSNotification*)note {
     NSLog(@"iapHelperProductWasPurchased called");
+    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ns_notification" action:@"product_purchased" label:note.object value:nil] build]];
     if ([((NSString *) note.object) isEqualToString:IAPEmailAdBlockProductIdentifier]){
         [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Thanks for your support" description:@"Enabled Emails and Disabled iAds" type:TWMessageBarMessageTypeSuccess];
         NSLog(@"iapHelperProductWasPurchased called and ads were told to be hidden");
         if (self.iAd){
-        self.iAd.hidden = YES;
-        [self.iAd removeFromSuperview];
-        self.iAd = nil;
+            self.iAd.hidden = YES;
+            [self.iAd removeFromSuperview];
+            self.iAd = nil;
         }
     }
 }

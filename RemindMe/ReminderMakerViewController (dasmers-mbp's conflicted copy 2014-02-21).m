@@ -68,7 +68,8 @@
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"Create Reminders"];
+    [tracker set:kGAIScreenName
+           value:@"Create Reminders"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
@@ -151,21 +152,9 @@
         [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Setup Device For Texts" description:@"This device is not currently set up to send texts. Please configure it to send texts before scheduling text reminders." type:TWMessageBarMessageTypeError];
     }
 
+    
     if (readyToSave){
         if ([[DataStore instance] createNewReminderWithType:self.currentMessageType recipientName:self.personLabel.text recipient:self.recipient subject:self.subjectField.text message:self.textArea.text andFireDate:self.selectedDate]){
-            NSString *eventLabel;
-            if (self.currentMessageType == ReminderTypeMessage){
-                eventLabel = @"MessageType";
-            }
-            else if (self.currentMessageType == ReminderTypeMail){
-                eventLabel = @"MailType";
-            }
-            else{
-                eventLabel = @"UnknownType";
-            }
-            GAIDictionaryBuilder *eventDictionary = [GAIDictionaryBuilder createEventWithCategory:@"UI_Action" action:@"Saved_Reminder" label:eventLabel value:nil];
-            id<GAITracker>  tracker= [[GAI sharedInstance] defaultTracker];
-            [tracker send:[eventDictionary build]];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }

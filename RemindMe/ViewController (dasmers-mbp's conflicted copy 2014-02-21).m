@@ -98,7 +98,6 @@
     [self.navigationItem setBackBarButtonItem: backButton];
     UIViewController *rmvc = [self.storyboard instantiateViewControllerWithIdentifier:@"reminderMaker"];
     [self.navigationController pushViewController:rmvc animated:YES];
-    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"CreateReminderClicked" label:nil value:nil] build]];
 }
 
 - (void)didReceiveMemoryWarning

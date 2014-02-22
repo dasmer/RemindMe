@@ -19,5 +19,5 @@ UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 - (void)buyProduct:(SKProduct *)product;
 - (BOOL)productPurchased:(NSString *)productIdentifier;
 - (void)restoreCompletedTransactions;
-
+- (void)provideContentForProductIdentifier:(NSString *)productIdentifier;
 @end

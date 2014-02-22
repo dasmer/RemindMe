@@ -14,5 +14,5 @@ extern NSString *const IAPEmailAdBlockProductIdentifier;
 
 + (RemindMeIAPHelper *)sharedInstance;
 
-
+- (void) enableEmailsAndDisableAdsForFree;
 @end

@@ -36,6 +36,7 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 
+    
     self.title = @"In App Purchases";
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -46,29 +47,28 @@
     _priceFormatter = [[NSNumberFormatter alloc] init];
     [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-
+    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelTapped:)];
+//    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStyleBordered target:self action:@selector(restoreTapped:)];
 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"In-App Purchases"];
-    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    NSString *eventLabel;
+    GAIDictionaryBuilder *eventDictionary;
+    
     if ([[RemindMeIAPHelper sharedInstance] productPurchased:IAPEmailAdBlockProductIdentifier]){
-        eventLabel = @"IAPBought";
+         eventDictionary = [GAIDictionaryBuilder createEventWithCategory:@"UI_Action" action:@"Closed_IAP_VC" label:@"IAPBought" value:nil];
     }
     else{
-        eventLabel = @"IAPNotBought";
+        eventDictionary = [GAIDictionaryBuilder createEventWithCategory:@"UI_Action" action:@"Closed_IAP_VC" label:@"IAPNotBought" value:nil];
     }
-    GAIDictionaryBuilder *eventDictionary = [GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"Closed_IAP_VC" label:eventLabel value:nil];
     [tracker send:[eventDictionary build]];
 }
 
@@ -81,6 +81,7 @@
             *stop = YES;
         }
     }];
+    
 }
 
 - (void)reload {

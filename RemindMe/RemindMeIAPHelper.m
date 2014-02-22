@@ -24,4 +24,9 @@ NSString *const IAPEmailAdBlockProductIdentifier = @"edu.columbia.ds2644.emailad
     return sharedInstance;
 }
 
+
+- (void)enableEmailsAndDisableAdsForFree{
+    [self provideContentForProductIdentifier:IAPEmailAdBlockProductIdentifier];
+}
+
 @end
