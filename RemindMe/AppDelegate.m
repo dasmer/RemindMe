@@ -11,6 +11,7 @@
 #import "NavigationController.h"
 #import "Reminder+Methods.h"
 #import "RemindMeIAPHelper.h"
+#import "UAAppReviewManager.h"
 
 NSString *GoogleAnalyticsTrackingID = @"UA-48290782-1";
 
@@ -51,7 +52,12 @@ NSString *GoogleAnalyticsTrackingID = @"UA-48290782-1";
     [[NSNotificationCenter defaultCenter]
      postNotificationName:kReminderFireDateCheckNotification
      object:self];
-
+    
+    [UAAppReviewManager setAppID:@"792456128"];
+    [UAAppReviewManager showPromptIfNecessary];
+    [UAAppReviewManager setAppName:@"RemindMe"];
+    [UAAppReviewManager setCancelButtonTitle:@"No Thanks"];
+    [UAAppReviewManager setDaysUntilPrompt:10];
     
     return YES;
 }

@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_TWMessageBarManager 3
 #define COCOAPODS_VERSION_PATCH_TWMessageBarManager 0
 
+// UAAppReviewManager
+#define COCOAPODS_POD_AVAILABLE_UAAppReviewManager
+#define COCOAPODS_VERSION_MAJOR_UAAppReviewManager 0
+#define COCOAPODS_VERSION_MINOR_UAAppReviewManager 2
+#define COCOAPODS_VERSION_PATCH_UAAppReviewManager 1
+
 // UIAlertView+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks
 #define COCOAPODS_VERSION_MAJOR_UIAlertView_Blocks 0

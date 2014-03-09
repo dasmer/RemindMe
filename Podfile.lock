@@ -17,6 +17,7 @@ PODS:
     - FontAwesomeKit/Core
   - GoogleAnalytics-iOS-SDK (3.0.3)
   - TWMessageBarManager (1.3.0)
+  - UAAppReviewManager (0.2.1)
   - UIAlertView+Blocks (0.7)
 
 DEPENDENCIES:
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - FontAwesomeKit
   - GoogleAnalytics-iOS-SDK
   - TWMessageBarManager
+  - UAAppReviewManager (~> 0.2.1)
   - UIAlertView+Blocks
 
 SPEC CHECKSUMS:
@@ -31,6 +33,7 @@ SPEC CHECKSUMS:
   FontAwesomeKit: 6aae55f9758b24d44a7ddaf4dc00dc8d23dff99a
   GoogleAnalytics-iOS-SDK: 7b0e55cfe5e70d60478a7b105f15ac71e8bc373e
   TWMessageBarManager: 82343e43813dba4e66e75bc73d265a361a661eed
+  UAAppReviewManager: 5951542f163e9964ce0e5bd6543f512dfc0efd51
   UIAlertView+Blocks: 7e876c2bace976306640443745b57912565d840d
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.29.0

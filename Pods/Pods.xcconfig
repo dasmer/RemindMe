@@ -1,5 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ECPhoneNumberFormatter" "${PODS_ROOT}/Headers/FontAwesomeKit" "${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/TWMessageBarManager" "${PODS_ROOT}/Headers/UIAlertView+Blocks" $(SDKROOT)/usr/include/libz
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/ECPhoneNumberFormatter" "${PODS_ROOT}/Headers/FontAwesomeKit" "${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" "${PODS_ROOT}/Headers/TWMessageBarManager" "${PODS_ROOT}/Headers/UAAppReviewManager" "${PODS_ROOT}/Headers/UIAlertView+Blocks" $(SDKROOT)/usr/include/libz
 LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/GoogleAnalytics-iOS-SDK"
-OTHER_LDFLAGS = -ObjC -lGoogleAnalyticsServices -lz -framework CFNetwork -framework CoreData -framework CoreText -framework SystemConfiguration -framework UIKit -weak_framework AdSupport
+OTHER_CFLAGS = $(inherited) "-isystem${PODS_ROOT}/Headers" "-isystem${PODS_ROOT}/Headers/ECPhoneNumberFormatter" "-isystem${PODS_ROOT}/Headers/FontAwesomeKit" "-isystem${PODS_ROOT}/Headers/GoogleAnalytics-iOS-SDK" "-isystem${PODS_ROOT}/Headers/TWMessageBarManager" "-isystem${PODS_ROOT}/Headers/UAAppReviewManager" "-isystem${PODS_ROOT}/Headers/UIAlertView+Blocks"
+OTHER_LDFLAGS = -ObjC -lGoogleAnalyticsServices -lz -framework CFNetwork -framework CoreData -framework CoreText -framework SystemConfiguration -framework UIKit -weak_framework AdSupport -weak_framework StoreKit
 PODS_ROOT = ${SRCROOT}/Pods

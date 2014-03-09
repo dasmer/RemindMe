@@ -4,3 +4,4 @@ pod 'TWMessageBarManager'
 pod 'ECPhoneNumberFormatter'
 pod 'UIAlertView+Blocks'
 pod "GoogleAnalytics-iOS-SDK"
+pod 'UAAppReviewManager', '~> 0.2.1'
